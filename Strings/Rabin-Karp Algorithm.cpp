@@ -13,7 +13,13 @@ const ll MOD = 1e9+7;
 // it uses rolling Hash function but here we have precalculates the hash values of the prefix of the strings T in which 
 // the pattern has to be searched.
 
-/// h(s) = s[0] * 1 + s[1] * p + s[2] * p^2 + s[3] * p^3 .... + s[n - 1] * p^(n - 1).
+/// h(s[0 .... n - 1]) = s[0] * 1 + s[1] * p + s[2] * p^2 + s[3] * p^3 .... + s[n - 1] * p^(n - 1). -----> (1)
+/// h(s[i .... j]) = s[i] + s[i + 1] * p + s[i + 2] * p^2 + s[i + 3] * p^3 .... + s[j] * p^(j - i). -----> (2)
+
+/// multiplying eq (2) with p^i
+
+/// h(s[i ....j]) * p^i = s[i] * p^i + s[i + 1] * p^(i + 1) + s[i + 2] * p^(i + 2) ....
+/// ==>  h(s[0 ..... j]) - h(s[0 .... i]).
 
 vector<int> Rabin_Karp(string const& s , string const& t){
     const int p = 31; /// take a prime number >= no of possible entities like for small case letters (26) take p = 31 and for 
@@ -37,7 +43,7 @@ vector<int> Rabin_Karp(string const& s , string const& t){
     for(int i = 0; i + S - 1 < T; i++){ // check the hash value of every possible substring of length S.
         ll curr_h = (h[i + S] + m - h[i]) % m; /// (a - b) % m = (a + m - b) % m if (a - b > m)
         if(curr_h == h_s * p_pow[i] % m)
-            occurences.push_back(i);
+            occurences.push_back(i);            
     }
     return occurences; // return the indices in t(string) where we will find s(string).
 }
