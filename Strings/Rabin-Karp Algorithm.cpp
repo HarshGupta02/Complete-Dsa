@@ -10,6 +10,8 @@ const ll MOD = 1e9+7;
 #define all(a) (a).begin(),(a).end()
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 
+// TIME(WORST CASE) = O(N * M) , TIME(AVERAGE) = O(N - M + 1);
+
 // it uses rolling Hash function but here we have precalculates the hash values of the prefix of the strings T in which 
 // the pattern has to be searched.
 
