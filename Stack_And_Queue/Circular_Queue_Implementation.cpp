@@ -33,6 +33,7 @@ int pop(){
         exit(0);
     }
     int rmv = a[front];
+    a[front] = -1;
     if(front == rear){
         front = -1;
         rear = -1;
