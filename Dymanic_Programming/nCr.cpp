@@ -1,3 +1,6 @@
+/// Note : 1. C(N,R) = C(N - 1 , R) + C(N - 1 , R - 1);
+///        2. P(N,R) = P(N - 1 , R) + R * P(N - 1 , R - 1);
+
 /// TIME = O(N * R) , SPACE = O(N * R)
 
 class Solution{
