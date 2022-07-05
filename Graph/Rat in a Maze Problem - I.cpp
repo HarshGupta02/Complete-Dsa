@@ -1,4 +1,4 @@
-lass Solution{
+class Solution{
     public:
     
     int dx[4] = {0,-1,0,1};
