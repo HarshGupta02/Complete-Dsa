@@ -64,6 +64,8 @@ class Solution
 // PRIM'S ALGORITHM = HERE WE SELECT A SOURCE NODE AND THEN KEEP ON SELECTING THE MIN WEIGHT NODE
 // THAT IS NOT PRESENT IN THE MST AND IS A NEIGHBOUR OF THE NODES THAT ARE CURRENTLY IN MST.
 
+/// TIME = O(N ^ 2)
+
 class Solution
 {
 	public:
@@ -86,6 +88,43 @@ class Solution
                 if(!visited[neigh[0]] and neigh[1] < key[neigh[0]]){
                     key[neigh[0]] = neigh[1];
                     parent[neigh[0]] = node; 
+                }
+            }
+        }
+        int cost = 0;
+        for(int i = 0; i < V; i ++){
+            if(parent[i] == -1) continue;
+            for(auto neigh : adj[i]){
+                if(neigh[0] == parent[i]) cost += neigh[1];
+            }
+        }
+        return cost;
+    }
+};
+
+/// EFFICIENT ALGO , TIME = O(N LOGN)
+
+class Solution
+{
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+        vector<int>key(V,INT_MAX);
+        vector<bool>visited(V,false);
+        vector<int>parent(V,-1);
+        key[0] = 0; parent[0] = -1;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq; // {weight,node}
+        pq.push({0,0});
+        while(!pq.empty()){
+            int node = pq.top().second;
+            pq.pop();
+            visited[node] = true;
+            for(auto neigh : adj[node]){
+                if(!visited[neigh[0]] and neigh[1] < key[neigh[0]]){
+                    key[neigh[0]] = neigh[1];
+                    parent[neigh[0]] = node;
+                    pq.push({neigh[1],neigh[0]});
                 }
             }
         }
