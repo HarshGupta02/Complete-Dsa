@@ -1,24 +1,23 @@
-class Solution{
-  public:
-    //Function to merge K sorted linked list.
+class Solution {
+public:
     
-    Node* sortedMerge(Node* head1, Node* head2)  
+    ListNode* sortedMerge(ListNode* head1, ListNode* head2)  
     {
-        Node* p1 = head1;
-        Node* p2 = head2;
-        Node* head = new Node(-1);
-        Node* prev = head;
+        ListNode* p1 = head1;
+        ListNode* p2 = head2;
+        ListNode* head = new ListNode(-1);
+        ListNode* prev = head;
         while(p1 != NULL and p2 != NULL){
-            int upper = p1 -> data;
-            int lower = p2 -> data;
+            int upper = p1 -> val;
+            int lower = p2 -> val;
             if(upper <= lower){
-                Node* nxt = p1 -> next;
+                ListNode* nxt = p1 -> next;
                 p1 -> next = p2;
                 prev -> next = p1;
                 prev = p1;
                 p1 = nxt;
             }else{
-                Node* nxt = p2 -> next;
+                ListNode* nxt = p2 -> next;
                 p2 -> next = p1;
                 prev -> next = p2;
                 prev = p2;
@@ -38,28 +37,16 @@ class Solution{
         return head1;
     }
     
-    Node * mergeKLists(Node *arr[], int K)
-    {
-        priority_queue<Node**,vector<Node**>,greater<Node**>> pq;
-        for(int i = 0; i < K; i ++){
-            pq.push(&arr[i]);
-        }
-        Node* curr = *pq.top();
-        pq.pop();
-        while(!pq.empty()){
-            Node* tp = *pq.top();
+    ListNode* mergeKLists(vector<ListNode*>& arr) {
+        int K = arr.size();
+        if(K == 0) return NULL;
+        ListNode* curr = arr[0];
+        int i = 1;
+        while(i < K){
+            ListNode* tp = arr[i];
             curr = sortedMerge(curr,tp);
-            pq.pop();
+            i ++;
         }
         return curr;
-        // while(!pq.empty()){
-        //     Node* tp = *pq.top();
-        //     while(tp != NULL){
-        //         cout << tp -> data << " ";
-        //         tp = tp -> next;
-        //     }
-        //     pq.pop();
-        // }
-        // return NULL;
     }
 };
