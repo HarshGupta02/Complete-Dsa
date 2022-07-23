@@ -1,3 +1,17 @@
+/*
+here we need to print the boundary so first we try to print the left most
+elements , then the bottom ones and then the rightmost ones.
+
+=> left elements:
+if there exist a left then go there , if not then check for right and if not 
+null so go there else if both left and right are null so return;
+
+=> for leaf nodes easy.
+
+=> for right elements : same as left elements , just vice versa.
+
+*/
+
 class Solution {
 public:
     
