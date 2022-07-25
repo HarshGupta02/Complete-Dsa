@@ -1,4 +1,4 @@
-// Recursive :
+// Recursive : TIME = O(N) , SPACE = O(HEIGHT OF TREE)
 
 class Solution {
   public:
@@ -18,7 +18,7 @@ class Solution {
     }
 };
 
-// Iterative :
+// Iterative : TIME = O(N) , SPACE = O(HEIGHT OF TREE)
 
 class Solution {
   public:
@@ -36,6 +36,44 @@ class Solution {
             stk.pop();
             ans.push_back(curr -> data);
             curr = curr -> right;
+        }
+        return ans;
+    }
+};
+
+/// MORRIS TRAVERSAL : TIME = O(N) , SPACE = O(1)
+
+/*
+here we know that we reach the data of the root after visiting the rightmost node
+of the left subtree and so if we don't have a connection so we first 
+establish it and then curr goes to left and if there is already a connection
+then we first break the connection and then go right.
+*/
+
+class Solution {
+  public:
+    // Function to return a list containing the inorder traversal of the tree.
+    vector<int> inOrder(Node* root) {
+        vector<int>ans;
+        Node* curr = root;
+        while(curr != NULL){
+            if(curr -> left == NULL){
+                ans.push_back(curr -> data);
+                curr = curr -> right;
+            }else{
+                Node* prev = curr -> left;
+                while(prev -> right != NULL and prev -> right != curr){
+                    prev = prev -> right;
+                }
+                if(prev -> right == NULL){
+                    prev -> right = curr;
+                    curr = curr -> left;
+                }else{
+                    prev -> right = NULL;
+                    ans.push_back(curr -> data);
+                    curr = curr -> right;
+                }
+            }
         }
         return ans;
     }
