@@ -9,7 +9,7 @@ const ll MOD = 1e9+7;
 #define all(a) (a).begin(),(a).end()
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 
-void max_heapify(vector<int>& heap, int curr , int sz){
+void max_heapify(int heap[], int curr , int sz){
     int left = 2 * curr + 1;
     int right = 2 * curr + 2;
     int largest;
@@ -25,20 +25,18 @@ void max_heapify(vector<int>& heap, int curr , int sz){
 void solve(){   
     int n;
     cin >> n;
-    vector<int>heap;
+    int heap[n];
     for(int i = 0; i < n ; i ++){
-        int x;
-        cin >> x;
-        heap.push_back(x);
+        cin >> heap[i];
     }
 
     // build 
 
-    for(int i = (heap.size()/2) - 1; i >= 0; i --){
-        max_heapify(heap,i,heap.size());
+    for(int i = (n/2) - 1; i >= 0; i --){
+        max_heapify(heap,i,n);
     }
 
-    for(auto it : heap) cout << it << " ";
+    for(int i = 0; i < n ; i ++) cout << heap[i] << " ";
     cout << nline;
 }
 
