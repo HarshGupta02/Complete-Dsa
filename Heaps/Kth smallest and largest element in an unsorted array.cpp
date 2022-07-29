@@ -1,3 +1,5 @@
+// TIME = O(N * LOGK) , SPACE = O(K)
+
 class Solution{
     public:
     // arr : given array
