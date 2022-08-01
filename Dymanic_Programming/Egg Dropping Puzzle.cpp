@@ -66,3 +66,46 @@ class Solution
         return prev[k];
     }
 };
+
+// METHOD 3: TIME = O(K * N* LOGN) , SPACE = O(N * K)
+
+/*
+IF WE HAVE I EGGS AND J FLOORS THEN WE DON'T NEED TO CHECK FOR EACH I FLOOR FROM
+1 TO J BECAUSE AS FLOORS INCREASES , THE NUMBER OF MOVES IN THE WORST CASE
+ALSO INCREASES.
+*/
+
+// k = number of eggs, n = number of floors.
+
+class Solution {
+public:
+    int superEggDrop(int k, int n) {
+        if(k == 1) return n;
+        if(n == 1) return 1;
+        vector<vector<int>>dp(k + 1, vector<int>(n + 1,0));
+        for(int i = 0; i <= k ;i ++){
+            dp[i][0] = 0;
+            dp[i][1] = 1;
+        }
+        for(int i = 0; i<= n; i ++){
+            dp[0][i] = 0;
+            dp[1][i] = i;
+        }
+        for(int i = 2; i <= k; i ++){
+            for(int j = 2; j <= n ; j ++){
+                int low = 1, high = j, temp = 0, ans = INT_MAX;
+                while(low <= high){
+                    int mid = low + (high - low)/2;
+                    int left = dp[i - 1][mid - 1];
+                    int right = dp[i][j - mid];
+                    temp = 1 + max(left,right);
+                    if(left < right) low = mid + 1;
+                    else high = mid - 1;
+                    ans = min(ans,temp);
+                }
+                dp[i][j] = ans;
+            }
+        }
+        return dp[k][n];
+    }
+};
