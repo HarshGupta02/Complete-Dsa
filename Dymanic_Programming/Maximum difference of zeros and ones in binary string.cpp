@@ -4,7 +4,6 @@
 // updated values. we get the max sum which will be no of zeros which are in excess of 
 // number of 1's.
 
-
 class Solution{
 public:	
 	int maxSubstring(string S)
