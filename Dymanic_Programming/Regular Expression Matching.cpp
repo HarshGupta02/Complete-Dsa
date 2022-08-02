@@ -17,8 +17,6 @@ new prev_char maches the s[j - 1] so dp[i][j] = dp[i - 1][j] or dp[i - 2][j] .
 here dp[i - 1][j] because if both their last char mathces , then we can append as many
 prev_char's as we want by looking at the test string and we can consider all possible
 pattern's of '*' by recursively considering both the cases.
- 
-
 */
 
 class Solution {
