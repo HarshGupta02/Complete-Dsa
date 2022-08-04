@@ -46,3 +46,60 @@ public:
 // 6
 // 0
 // 7
+
+//METHOD 2: 
+
+
+struct Node{
+    int weight, node, level;
+    Node(int w, int n, int lvl){
+        this -> weight = w;
+        this -> node = n;
+        this -> level = lvl;
+    }
+};
+
+class Solution {
+public:
+    
+    struct cmp{
+        bool operator()(const Node &a, const Node &b){
+            return a.weight < b.weight;
+        }
+    };
+    
+    vector<vector<pair<int,int>>>adj;
+    
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+        adj.resize(n);
+        for(auto curr : flights){
+            int u = curr[0], v = curr[1], w = curr[2];
+            adj[u].push_back({v,w});
+        }
+        priority_queue<Node,vector<Node>,cmp>pq;
+        int level = 0;
+        pq.push(Node(0, src, level));
+        int ans = 0;
+        while(!pq.empty()){
+            auto curr = pq.top();
+            pq.pop();
+            int w = curr.weight, curr_node = curr.node, lvl = curr.level;
+            if(curr_node == dst) {
+                ans += w;
+                return ans;
+            }
+            if(lvl > k){
+                pq.pop(); continue;
+            }
+            ans += w;
+            for(auto neigh : adj[curr_node]) {
+                pq.push(Node(neigh.second,neigh.first,lvl + 1));
+            }
+        }
+        return -1;
+    }
+};
+
+
+
+
