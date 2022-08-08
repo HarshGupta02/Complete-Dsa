@@ -1,3 +1,5 @@
+//  TIME = O(N) , SPACE = O(1)
+
 /*
 if an array of size n so the ans will be always in the range 1 .... n + 1.
 so we try to bring the elements of the array equal to the their value's index.
@@ -16,6 +18,9 @@ public:
         for(int i = 0; i < n; i ++){
             while(a[i] >= 0 and a[i] < n and a[i] != i){
                 if(a[i] != a[a[i]]) swap(a[i], a[a[i]]);
+                // each swap ensures that one pair will be formed and if one pair
+                // takes many iterations then for other elements, there would be less
+                // iterations.
                 else break;
             }
         }
