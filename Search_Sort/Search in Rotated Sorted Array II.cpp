@@ -9,31 +9,18 @@ TIME = O(LOGN) -> BEST CASE,  O(N) -> WORST CASE(when all elements are equal).
 
 class Solution {
 public:
-    bool search(vector<int>& nums, int target) {
-        int n = nums.size();
+    int findMin(vector<int>& a) {
+        int n = a.size();
         int low = 0, high = n - 1;
-        while(low <= high){
+        while(high - low > 1){
             int mid = low + (high - low)/2;
-            if(nums[mid] == target) return true;
-            if(nums[low] == nums[mid] and nums[mid] == nums[high]){
-                low ++; high --;
-            }else if(nums[low] <= nums[mid]){
-                if(target >= nums[low] and target <= nums[mid]) high = mid - 1;
-                else low = mid + 1;
-            }else{
-                if(target >= nums[mid] and target <= nums[high]) low = mid + 1;
-                else high = mid - 1;
+            if(a[low] == a[mid] and a[mid] == a[high]){
+                low ++; high --; continue;
             }
+            if(a[low] <= a[mid] and a[mid] <= a[high]) return a[low];
+            if(a[low] <= a[mid]) low = mid;
+            else high = mid;
         }
-        return false;
+        return min(a[low], a[high]);
     }
 };
-
-/*
-
-1. when no duplicates, we tried for possible position of target.
-2. when duplicates, so try to reduce search space by moving low and high
-closer to each other.
-
-[1,1,1,2,1]
-*/
