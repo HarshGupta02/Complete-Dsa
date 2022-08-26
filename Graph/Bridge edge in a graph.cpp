@@ -36,7 +36,6 @@ class Solution
             if(neigh != par) mini = min(mini , Lowtime[neigh]);
         }
         Lowtime[src] = mini;
-        // assert(par != -1);
         if(par != -1 and Lowtime[par] < Lowtime[src]){
             if((par == c and src == d) or (par == d and src == c))
                 possible = true;
