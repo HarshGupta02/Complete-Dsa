@@ -1,8 +1,6 @@
 class Solution {
 public:
-    
     vector<int>dp;
-    
     int f(int &curr, int n, int &ans){
         if(curr < 0) return 0;
         if(curr == 0) return 1;
