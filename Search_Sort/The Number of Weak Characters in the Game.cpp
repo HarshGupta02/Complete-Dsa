@@ -1,3 +1,10 @@
+/*
+here we sort attacks in decreasing order and if same attack so sort defence in 
+ascending order. and we keep a max_defence from the left. so if max_defence > curr_defence
+then it is a weak element because a character of same attack cannot have greater 
+defence that the curr defence.
+*/
+
 class Solution {
 public:
     
