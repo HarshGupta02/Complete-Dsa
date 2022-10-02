@@ -1,4 +1,4 @@
-// TIME = O(N) , SPACE = O(4 * N) ~~ O(N).
+// METHOD 1: TIME = O(N) , SPACE = O(4 * N) ~~ O(N).
 
 class Solution {
 public:
@@ -49,5 +49,32 @@ public:
         }
         nax2 = 2 * nax2;
         return n - max(nax1, nax2);
+    }
+};
+
+// METHOD 2: 
+
+/*
+here we check if first and last characters are same or not. if same if we move to 
+next closer pair of elements and then if they are not equal so the whole string 
+cannot become a palindrome so the j1 th character is added at front(virtually) and 
+then we know that the first and last character are the same so we do j1 --.
+*/
+
+class Solution {
+public:
+    int minChar(string str){
+        int n = str.size();
+        int i = 0, j = n - 1, j1 = n - 1;
+        int cnt = 0;
+        while(i < j){
+            if(str[i] == str[j]){
+                i ++; j --; continue;
+            }
+            cnt ++;
+            i = 0; j1 --;
+            j = j1;
+        }
+        return cnt;
     }
 };
