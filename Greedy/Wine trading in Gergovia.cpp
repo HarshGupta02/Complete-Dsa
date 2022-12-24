@@ -1,3 +1,5 @@
+// METHOD 1:
+
 #include<bits/stdc++.h>
 using namespace std;
 using ll = long long int;
@@ -48,3 +50,30 @@ int main(){
     }   
     return 0;
 }
+
+// METHOD 2:
+
+/*
+for a buyer,we take the closest seller and for the seller, we take the closest buyer.?? why
+*/
+
+class Solution{
+  public:
+  using ll = long long int;
+  long long int wineSelling(vector<int>& a, int n){
+      ll ans = 0;
+      int b = -1, s = -1;
+      while(b < n and a[b] < 0) b ++;
+      while(s < n and a[s] > 0) s ++;
+      
+      while(b < n and s < n){
+          while(b < n and a[b] <= 0) b ++;
+          while(s < n and a[s] >= 0) s ++;
+          ll x = min(a[b], -1 * a[s]);
+          a[b] -= x;
+          a[s] += x;
+          ans += x * (abs(b - s));
+      }
+      return ans;
+  }
+};
