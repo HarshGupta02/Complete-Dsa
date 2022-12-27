@@ -1,4 +1,4 @@
-/// TIME = O(N ^ 2) , SPACE = O(1).
+/// METHOD 1: TIME = O(N ^ 2) , SPACE = O(1).
 
 
 #include <bits/stdc++.h>
