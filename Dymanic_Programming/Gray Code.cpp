@@ -1,3 +1,12 @@
+/*
+here to find the gray code of n bit, we use the gray code of n - 1 bit
+as it will also follow the same propery and for each sequence, we will
+first add 0's in front of sequence and then add 1's in front of sequence
+from the back and so hamming distance btw adjacent strings will always
+be 1. base case is for n = 1 {0, 1} hamming distance = 1.
+
+*/
+
 class Solution {
 public:
     
