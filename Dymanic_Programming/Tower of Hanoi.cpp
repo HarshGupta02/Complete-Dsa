@@ -1,3 +1,8 @@
+/*
+f(n, a, b, c) = return the sequence of moves to move n tiles from a to
+c via b.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define endl "\n"
