@@ -1,4 +1,6 @@
 /*
+METHOD 1: 
+
 so here we see that if number of negatives are even so ans is size of the array.
 if not then we consider all subarrays between 2 consecutive zeros and then for each 
 subarray, we find the first the negative and the last negative and we just remove 
@@ -41,6 +43,51 @@ public:
                 if(last_neg != -1) ans = max(ans, last_neg - left);
             }
             i = right + 1;
+        }
+        return ans;
+    }
+};
+
+/*
+METHOD 2:
+
+here p = max lenght of subarray with positive product including the current
+element.
+n = max lenght of subarrya wit negative product including the current element.
+
+if a[i] = 0 so p = 0, n = 0 as no postive or negative product subarray can be
+formed.
+
+if a[i] > 0 so we add the current element to both p and n and p will remain 
+positive after multiplying and n will remain negative after multiplying. but
+negative will remai negative only if n != 0 as if n = 0 so neg_prod = 0.
+
+if a[i] < 0 so we cannot a[i] to both n and p as the parity will reverse so
+we first swap p and n and then p stores max lenght with neg product and n 
+stores the max lenght with pos product. so we do n ++ as the prod will become
+negative anyhow but if p == 0 and we do p ++ then p contains only one element
+and it will be negative but it will contradict the statement that p can only 
+contain the lenght of positive product.
+
+*/
+
+class Solution {
+public:
+    int getMaxLen(vector<int>& nums) {
+        int nn = nums.size();
+        int p = 0, n = 0, ans = 0;
+        for(int i = 0; i < nn; i ++){
+            if(nums[i] == 0) p = n = 0;
+            else if(nums[i] > 0) {
+                p ++; 
+                if(n != 0) n ++;
+                ans = max(ans, p);
+            }else {
+                swap(p, n);
+                n ++;
+                if(p != 0) p ++;
+                ans = max(ans, p);
+            }
         }
         return ans;
     }
