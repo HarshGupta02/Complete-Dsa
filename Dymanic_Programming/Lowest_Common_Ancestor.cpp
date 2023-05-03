@@ -7,14 +7,15 @@ vector<int> children[MAX_N];
 int up[MAX_N][LOG]; // up[v][j] is 2^j-th ancestor of v
 int depth[MAX_N];
 
-void dfs(int a) {
+void dfs(int a, int par) {
 	for(int b : children[a]) {
+		if(b == par) continue;
 		depth[b] = depth[a] + 1;
 		up[b][0] = a;
 		for(int j = 1; j < LOG; j++) {
 			up[b][j] = up[up[b][j-1]][j-1];
 		}
-		dfs(b);
+		dfs(b, a);
 	}
 }
 
