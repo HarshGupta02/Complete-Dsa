@@ -22,3 +22,23 @@ int getNthFromLast(Node *head, int n)
     }
     return slow -> data;
 }
+
+// METHOD 2:
+
+class Solution{
+public:
+    int getNthFromLast(Node *head, int n){
+        Node* slow = head, *fast = head;
+        while(fast != NULL) {
+            if(n > 0) {
+                fast = fast -> next;
+                n --;
+            }else {
+                slow = slow -> next;
+                fast = fast -> next;
+            }
+        }
+        if(n > 0) return -1;
+        return slow -> data;
+    }
+};
