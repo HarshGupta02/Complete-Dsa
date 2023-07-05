@@ -37,3 +37,32 @@ public:
         return ans;
     }
 };
+
+// ALTERNATE SOLUTION
+
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        int n = s.size(), m = t.size();
+        if(n < m) return "";
+        vector<int> mp1(128, 0), mp2(128, 0);
+        for(char ch : t) mp2[ch] ++;
+        int i = 0, j = 0, len = INT_MAX, st = -1, en = -1;
+        int match_cnt = 0;
+        while(i < n and j < n) {
+            mp1[s[j]] ++;
+            if(mp1[s[j]] <= mp2[s[j]]) match_cnt ++;
+            while(match_cnt == m) {
+                int sz = (j - i) + 1;
+                if(sz < len) {
+                    len = sz; st = i; en = j;
+                }
+                mp1[s[i]] --;
+                if(mp1[s[i]] < mp2[s[i]]) match_cnt --;
+                i ++;
+            }
+            j ++;
+        }
+        return len == INT_MAX ? "" : s.substr(st, en - st + 1);
+    }
+};
