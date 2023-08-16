@@ -1,3 +1,6 @@
+// nth catalan number tells the ways in which we can arrange n pairs of left and right
+// parenthesis to form a balanced parenthesis expression.
+
 class Solution
 {
     public:
