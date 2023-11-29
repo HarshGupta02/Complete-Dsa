@@ -46,7 +46,7 @@ signed main(){
         abs_parent.insert(x);
     }
     vector<int> v(abs_parent.begin(), abs_parent.end());
-    cout << (int)v.size() - 1 << "\n";
+    cout << (int)v.size() << "\n";
     for(int i = 0; i < v.size() - 1; i ++) {
         cout << v[i] + 1 << " " << v[i + 1] + 1 << "\n";
     }
