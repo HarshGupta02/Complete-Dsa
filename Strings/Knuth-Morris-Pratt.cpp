@@ -8,6 +8,18 @@ TIME = O(M + N), SPACE = O(M + N)
 
 */
 
+ll fast_exp(ll a,ll b){
+    ll res = 1;
+    while(b>0){
+        if(b&1){
+            res = res * a;
+        }
+        b>>=1;
+        a = a * a;
+    }
+    return res;
+}
+
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -50,14 +50,14 @@ public:
     }
 
     vector<int> Reverse(stack<int> St){
-        vector<int>ans;
+        // vector<int>ans;
         f(St);
-        while(!St.empty()){
-            ans.push_back(St.top());
-            St.pop();
-        }
-        reverse(ans.begin(),ans.end());
-        return ans;
+        // while(!St.empty()){
+            // ans.push_back(St.top());
+            // St.pop();
+        // }
+        // reverse(ans.begin(),ans.end());
+        // return ans;
     }
 };
 

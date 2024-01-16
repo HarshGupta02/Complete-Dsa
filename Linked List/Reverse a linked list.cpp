@@ -4,9 +4,7 @@ class Solution
 {
     public:
     //Function to reverse a linked list.
-    struct Node* reverseList(struct Node *head)
-    {
-        struct Node* p1 = head;
+          struct Node* p1 = head;
         if(p1 -> next == NULL) return p1;
         struct Node* p2 = p1 -> next;
         p1 -> next = NULL;
@@ -19,7 +17,9 @@ class Solution
         }
         p2 -> next = p1;
         return p2;
-    }
+    }struct Node* reverseList(struct Node *head)
+    {
+  
     
 };
 

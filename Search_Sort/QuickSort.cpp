@@ -10,7 +10,7 @@ const ll MOD = 1e9+7;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 
 int Partition(vector<int> &a, int left, int right){
-    int i = left, j = right;
+    int i = left, j = right;    
     int pivot = a[left];
     while(i < j){
         while(a[i] <= pivot) i ++;

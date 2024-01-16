@@ -8,7 +8,6 @@ second_last, last, i
 so dp[i][last][second_last] = tells the number of distinct sequences that last
 element is "last" and second last element is "second_last" and the lenght 
 of sequence is (n - i).
-
 */
 
 class Solution {

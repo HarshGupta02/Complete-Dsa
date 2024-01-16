@@ -1,4 +1,4 @@
-// METHOD 1: TIME = O(N) , SPACE = O(4 * N) ~~ O(N).
+    // METHOD 1: TIME = O(N) , SPACE = O(4 * N) ~~ O(N).
 
 class Solution {
 public:

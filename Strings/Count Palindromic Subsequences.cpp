@@ -8,7 +8,7 @@ M is the middle string. so
 
 str(C1 M C2) = C1 + M + C2 and 
 
-s(C1 M C2) = represents the total subsequences of the given string 
+s(C1 M C2) = represents the total palindromic subsequences of the given string 
            => s(str(....s(M)....)) + s(str(C1....s(M)....)) + s(str(....s(M)....C2)) + s(str(C1....s(M)....C2));
                      C1'                      C2'                         C3'                       C4'
 

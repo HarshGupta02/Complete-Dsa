@@ -41,7 +41,7 @@ void solve(ll it){
         }
         if(obstacles > 0)
             swaps += obstacles;
-        cnt ++;
+        cnt ++; 
         if(cnt >= k) break; /// ??? why needed
     }
     if(cnt >= k)

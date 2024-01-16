@@ -47,7 +47,7 @@ class Solution{
         }
     }
   
-    vector<string> genIp(string &s) {
+    vector<string> restoreIpAddresses(string s) {
         int n = s.size();
         if(n <= 3){
             ans.push_back("-1");

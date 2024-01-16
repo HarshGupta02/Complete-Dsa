@@ -50,6 +50,7 @@ void f(Node* root, map<int,int> &mp1, map<int,int> &mp2){
     f(root -> right,mp1,mp2);
 }
 
+
 bool isDeadEnd(Node *root)
 {
     map<int,int>mp1,mp2;

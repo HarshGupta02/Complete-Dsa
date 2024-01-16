@@ -19,7 +19,7 @@ void solve(){
         if(a[i] > sm) sm = a[i];
         if(sm > m) swap(m, sm);
     }
-    cout << m << " " << sm << nline;
+    cout << sm << nline;
 }
 
 int main() {

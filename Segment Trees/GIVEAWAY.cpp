@@ -36,9 +36,8 @@ public:
     int query(int x, int y, int l, int r, int v, int k) {
         if(r < x or l > y) return 0;
         if(l >= x and r <= y) {
-            vector<int> curr = tree[v];
-            int sz = curr.size();
-            int idx = upper_bound(curr.begin(), curr.end(), k - 1) - curr.begin();
+            int sz = tree[v].size();
+            int idx = upper_bound(tree[v].begin(), tree[v].end(), k - 1) - tree[v].begin();
             return sz - idx;
         }
         int m = (l + r)/2;

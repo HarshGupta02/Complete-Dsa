@@ -24,7 +24,7 @@ public:
 };
 
 
-// METHOD 2 : TIME = O(N) , SPACE = O(1);
+// METHOD 2 : TIME = O(N) , SPACE = O(1); FIND DUPLICATE AND MISSING NUMBER
 
 /*
 
@@ -82,3 +82,33 @@ public:
         return a;
     }
 };
+
+// OR
+
+class Solution{
+public:
+    vector<int> findTwoElement(vector<int> arr, int n) {
+        int xorr = 0;
+        for(int i = 0; i < n; i ++) {
+            xorr ^= (i + 1);
+            xorr ^= arr[i];
+        }
+        int number = xorr & ~(xorr - 1);
+        int b1 = 0, b2 = 0;
+        for(int i = 0; i < n; i ++) {
+            if((arr[i] & number) != 0) b1 ^= arr[i];
+            else b2 ^= arr[i];
+            if(((i + 1) & number) != 0) b1 ^= (i + 1);
+            else b2 ^= (i + 1);
+        }
+        for(int i = 0; i < n; i ++) {
+            if(arr[i] == b1) return {b1, b2};
+        }
+        return {b2, b1};
+    }
+};
+
+// METHOD 3: ALL REPEATING TWICE EXCEPT TWO NUMBERS => JUST SAME AS FIND MISSING AND 
+// DUPLICATE NUMBER. IN ABOVE METHOD THE XOR THAT WE DID WITH ARR[I] AND I, IT IS
+// ACTUALLY SAME THING AS ALL REPATING TWICE EXCEPT TWO NUMBERS.
+
